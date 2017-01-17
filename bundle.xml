@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<adapt_framework>
+    <bundle>
+        <name>locales_lu</name>
+        <label>Luxembourg Locality</label>
+        <type>locale</type>
+        <version>1.0.0</version>
+        <namespace>\adapt\locales\lu</namespace>
+        <version_status>release</version_status>
+        <availability>public</availability>
+        <description>Provides locality information for Luxembourg, such as phone number, address and date formats.</description>
+        <copyright>2017 Adapt Framework</copyright>
+        <license>MIT</license>
+        <website>http://www.adaptframework.com/documentaion/extentions/locales_lu</website>
+        <depends_on>
+            <bundle>
+                <name>locales</name>
+                <version>1.0</version>
+            </bundle>
+            <bundle>
+                <name>currency_eur</name>
+                <version>1.0</version>
+            </bundle>
+            <bundle>
+                <name>adapt</name>
+                <version>2.0</version>
+            </bundle>
+        </depends_on>
+        <works_with>
+            <bundle>
+                <name>locales</name>
+                <version>1.0</version>
+            </bundle>
+        </works_with>
+        <schema>
+            <add>
+                <table name="data_type">
+                    <record>
+                        <name>lu_phone</name>
+                        <based_on_data_type>varchar</based_on_data_type>
+                        <validator>lu_phone</validator>
+                        <formatter></formatter>
+                        <unformatter>phone</unformatter>
+                        <datetime_format></datetime_format>
+                        <max_length>24</max_length>
+                    </record>
+                    <record>
+                        <name>lu_mobile_phone</name>
+                        <based_on_data_type>varchar</based_on_data_type>
+                        <validator>lu_mobile_phone</validator>
+                        <formatter>lu_mobile_phone</formatter>
+                        <unformatter>phone</unformatter>
+                        <datetime_format></datetime_format>
+                        <max_length>24</max_length>
+                    </record>
+                    <record>
+                        <name>lu_date</name>
+                        <based_on_data_type>date</based_on_data_type>
+                        <validator>date</validator>
+                        <formatter>lu_date</formatter>
+                        <unformatter>lu_date</unformatter>
+                        <datetime_format>d.m.Y</datetime_format>
+                        <max_length></max_length>
+                    </record>
+                    <record>
+                        <name>lu_time</name>
+                        <based_on_data_type>time</based_on_data_type>
+                        <validator>time</validator>
+                        <formatter>lu_time</formatter>
+                        <unformatter>lu_time</unformatter>
+                        <datetime_format>H:i</datetime_format>
+                        <max_length></max_length>
+                    </record>
+                    <record>
+                        <name>lu_datetime</name>
+                        <based_on_data_type>datetime</based_on_data_type>
+                        <validator>datetime</validator>
+                        <formatter>lu_datetime</formatter>
+                        <unformatter>lu_datetime</unformatter>
+                        <datetime_format>d.m.Y H:i</datetime_format>
+                        <max_length></max_length>
+                    </record>
+                    <record>
+                        <name>lu_postcode</name>
+                        <based_on_data_type>varchar</based_on_data_type>
+                        <validator>lu_postcode</validator>
+                        <datetime_format></datetime_format>
+                        <max_length>8</max_length>
+                    </record>
+                </table>
+                <table name="country">
+                    <record>
+                        <name>lu</name>
+                        <label>Luxembourg</label>
+                        <date_data_type_id get-from="data_type" where-name-is="lu_date" />
+                        <time_data_type_id get-from="data_type" where-name-is="lu_time" />
+                        <datetime_data_type_id get-from="data_type" where-name-is="lu_datetime" />
+                        <currency_id get-form="currency" where-name-is="eur" />
+                    </record>
+                </table>
+                <table name="country_phone_data_type">
+                    <record>
+                        <country_id get-from="country" where-name-is="lu" />
+                        <name>lu_phone</name>
+                        <label>Phone</label>
+                        <data_type_id get-from="data_type" where-name-is="lu_phone" />
+                    </record>
+                    <record>
+                        <country_id get-from="country" where-name-is="lu" />
+                        <name>lu_mobile_phone</name>
+                        <label>Mobile phone</label>
+                        <data_type_id get-from="data_type" where-name-is="lu_mobile_phone" />
+                    </record>
+                </table>
+                <table name="country_address_format">
+                    <record>
+                        <country_id get-from="country" where-name-is="lu" />
+                        <priority>1</priority>
+                        <name>lu_house_number</name>
+                        <label>House number</label>
+                        <data_type_id get-from="data_type" where-name-is="varchar" />
+                        <max_length>64</max_length>
+                    </record>
+                    <record>
+                        <country_id get-from="country" where-name-is="lu" />
+                        <priority>2</priority>
+                        <name>lu_street_name</name>
+                        <label>Street name</label>
+                        <data_type_id get-from="data_type" where-name-is="varchar" />
+                        <max_length>38</max_length>
+                    </record>
+                    <record>
+                        <country_id get-from="country" where-name-is="lu" />
+                        <priority>3</priority>
+                        <name>lu_postcode</name>
+                        <label>Postcode</label>
+                        <data_type_id get-from="data_type" where-name-is="varchar" />
+                        <max_length>8</max_length>
+                    </record>
+                    <record>
+                        <country_id get-from="country" where-name-is="lu" />
+                        <priority>4</priority>
+                        <name>lu_locality</name>
+                        <label>Locality</label>
+                        <data_type_id get-from="data_type" where-name-is="varchar" />
+                        <max_length>24</max_length>
+                    </record>
+                </table>
+            </add>
+        </schema>
+        <settings>
+            <category name="Default locales">
+                <setting>
+                    <name>locales.default_date_format</name>
+                    <label>Default date format</label>
+                    <default_value>de_date</default_value>
+                </setting>
+                <setting>
+                    <name>locales.default_time_format</name>
+                    <label>Default time format</label>
+                    <default_value>de_time</default_value>
+                </setting>
+                <setting>
+                    <name>locales.default_datetime_format</name>
+                    <label>Default date/time format</label>
+                    <default_value>de_datetime</default_value>
+                </setting>
+            </category>
+        </settings>
+    </bundle>
+</adapt_framework>
