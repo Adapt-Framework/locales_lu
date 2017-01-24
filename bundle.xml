@@ -151,19 +151,9 @@
         <settings>
             <category name="Default locales">
                 <setting>
-                    <name>locales.default_date_format</name>
-                    <label>Default date format</label>
-                    <default_value>de_date</default_value>
-                </setting>
-                <setting>
-                    <name>locales.default_time_format</name>
-                    <label>Default time format</label>
-                    <default_value>de_time</default_value>
-                </setting>
-                <setting>
-                    <name>locales.default_datetime_format</name>
-                    <label>Default date/time format</label>
-                    <default_value>de_datetime</default_value>
+                    <name>locales.default_country</name>
+                    <label>Default country</label>
+                    <default_value>lu</default_value>
                 </setting>
             </category>
         </settings>
