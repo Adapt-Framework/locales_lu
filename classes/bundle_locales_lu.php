@@ -33,6 +33,7 @@ namespace adapt\locales\lu{
                 
                 $this->sanitize->add_format('lu_date',
                     function($value){
+                        if ($value === null  || $value == '') return null;
                         return \adapt\date::convert_date('Y-m-d', 'd.m.Y', $value);
                     },
                     "function(value){
@@ -42,6 +43,7 @@ namespace adapt\locales\lu{
                 
                 $this->sanitize->add_format('lu_time',
                     function($value){
+                        if ($value === null  || $value == '') return null;
                         return \adapt\date::convert_date('H:i:s', 'H:i', $value);
                     },
                     "function(value){
@@ -51,6 +53,7 @@ namespace adapt\locales\lu{
                 
                 $this->sanitize->add_format('lu_datetime',
                     function($value){
+                        if ($value === null  || $value == '') return null;
                         return \adapt\date::convert_date('Y-m-d H:i:s', 'd.m.Y H:i', $value);
                     },
                     "function(value){
@@ -63,6 +66,7 @@ namespace adapt\locales\lu{
                 
                 $this->sanitize->add_unformat('lu_time',
                     function($value){
+                        if ($value === null  || $value == '') return null;
                         $value = preg_replace("/[^0-9]/", '', $value);
                         return \adapt\date::convert_date('Hi', 'H:i:s', $value);
                     },
@@ -74,6 +78,7 @@ namespace adapt\locales\lu{
                 
                 $this->sanitize->add_unformat('lu_datetime',
                     function($value){
+                        if ($value === null  || $value == '') return null;
                         $value = preg_replace("/[^0-9]/", '', $value);
                         return \adapt\date::convert_date('dmYHi', 'Y-m-d H:i:s', $value);
                     },
@@ -85,6 +90,7 @@ namespace adapt\locales\lu{
                     
                 $this->sanitize->add_unformat('lu_date',
                     function($value){
+                        if ($value === null  || $value == '') return null;
                         $value = preg_replace("/[^0-9]/", '', $value);
                         return \adapt\date::convert_date('dmY', 'Y-m-d', $value);
                     },
