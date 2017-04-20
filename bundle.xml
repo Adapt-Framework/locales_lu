@@ -95,7 +95,7 @@
                         <date_data_type_id get-from="data_type" where-name-is="lu_date" />
                         <time_data_type_id get-from="data_type" where-name-is="lu_time" />
                         <datetime_data_type_id get-from="data_type" where-name-is="lu_datetime" />
-                        <currency_id get-form="currency" where-name-is="eur" />
+                        <currency_id get-from="currency" where-name-is="eur" />
                     </record>
                 </table>
                 <table name="country_phone_data_type">
